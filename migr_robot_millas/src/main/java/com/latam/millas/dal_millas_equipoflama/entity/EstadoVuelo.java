@@ -5,23 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+@Data
 @Entity
 @Table(name="estado_vuelo")
 public class EstadoVuelo {
 	
-	@Id
+	
 	@Column(name="vuelo_cdg_vuelo", nullable=false)
-	int vueloCodigoVuelo;
+	private int vueloCodigoVuelo;
 	
 	@Id
 	@Column(name="cdg_status", length=45, nullable=false)
-	String codigoStatus;
+	private String codigoStatus;
 	
 	@Column(name="flight_number", length=45, nullable=false)
-	String flightNumber;
+	private String flightNumber;
 	
 	@Column(name="flight_status", nullable=false)
-	int flightStatus;
+	private int flightStatus;
 
 	
 }

@@ -5,21 +5,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name="usuario")
-public class Usuario {
+@Data public class Usuario {
 	
 	@Id
 	@Column(name="Cdg_usuario", nullable=false)
-	int codigoUsuario;
+	private int codigoUsuario;
 	
 	@Column(name="email_usuario", length=45, nullable=false)
-	String emailUsuario;
+	private String emailUsuario;
 	
 	@Column(name="nom_usuario", length=45, nullable=false)
-	String nombreUsuario;
+	private String nombreUsuario;
 	
 	@Column(name="app_usuario", length=45, nullable=false)
-	String appUsuario;
+	private String appUsuario;
 
 }
