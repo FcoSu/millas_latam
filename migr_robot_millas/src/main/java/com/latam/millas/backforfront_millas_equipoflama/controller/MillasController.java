@@ -20,7 +20,7 @@ import com.latam.millas.dal_millas_equipoflama.dto.json;
 
 @RestController
 @RequestMapping("/api/millas_latam")
-public class Controller {
+public class MillasController {
 	public String Usuario = null;
 	public String pnr;
 	
@@ -30,7 +30,7 @@ public class Controller {
 	@Autowired
 	private VueloService vueloService;
 	
-	@RequestMapping (value ="/Millas/Post/Usuario/validar", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping (value ="/Millas/Post", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<List<VueloDto>> getData(@RequestBody json Json) {
 		
 		System.out.println("Email: " + Json.getUserEmail());
@@ -48,5 +48,5 @@ public class Controller {
 		
 	}
 	
-	//cosas por ahcer bla bla
+	
 }
