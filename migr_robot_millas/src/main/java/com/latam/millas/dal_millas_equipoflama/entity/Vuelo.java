@@ -9,33 +9,36 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
 @Entity
 @Table(name="vuelo")
-public class Vuelo {
+
+@Data public class Vuelo {
 	
 	@Id
 	@Column(name="cdg_vuelo", nullable=false)
-	int codigoVuelo;
+	private int codigoVuelo;
 	
 	@Column(name="pnr", length=45, nullable=false)
-	String pnr;
+	private String pnr;
 	
 	@Column(name="departure", length=45, nullable=false)
-	String departure;
+	private String departure;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="departure_date", nullable=false)
-	Date departureDate;
+	private Date departureDate;
 	
 	@Column(name="arrival", length=45, nullable=false)
-	String arrival;
+	private String arrival;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="arrival_date", nullable=false)
-	Date arrivalDate;
+	private Date arrivalDate;
 	
 	@Column(name="flight_number", length=45, nullable=false)
-	String flightNumber;
+	private String flightNumber;
 	
 
 }
