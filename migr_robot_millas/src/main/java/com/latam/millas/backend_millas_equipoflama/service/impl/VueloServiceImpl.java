@@ -1,4 +1,4 @@
-package com.latam.millas.backend_millas_equipoflama.service.implement;
+package com.latam.millas.backend_millas_equipoflama.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
