@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/api/millas_latam")
-public class Controller {
+public class MillasController {
 	public String Usuario = null;
 	public String pnr;
 	ExceptionResponse response = new ExceptionResponse();
