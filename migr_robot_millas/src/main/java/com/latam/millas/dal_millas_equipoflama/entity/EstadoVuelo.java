@@ -6,18 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-@Data
+
 @Entity
 @Table(name="estado_vuelo")
-public class EstadoVuelo {
+
+@Data public class EstadoVuelo {
 	
 	
-	@Column(name="vuelo_cdg_vuelo", nullable=false)
-	private int vueloCodigoVuelo;
+	@Column(name="cdg_vuelo", nullable=false)
+	private int CodigoVuelo;
 	
 	@Id
-	@Column(name="cdg_status", length=45, nullable=false)
-	private String codigoStatus;
+	@Column(name="cdg_status", nullable=false)
+	private int codigoStatus;
 	
 	@Column(name="flight_number", length=45, nullable=false)
 	private String flightNumber;

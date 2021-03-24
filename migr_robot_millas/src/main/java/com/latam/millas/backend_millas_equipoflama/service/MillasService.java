@@ -1,10 +1,13 @@
 package com.latam.millas.backend_millas_equipoflama.service;
 
-import java.util.List;
 
-import com.latam.millas.dal_millas_equipoflama.dto.EstadoVueloDto;
+import org.springframework.stereotype.Service;
 
+import com.latam.millas.dal_millas_equipoflama.dto.MillasDto;
+
+@Service
 public interface MillasService {
-
-	List<EstadoVueloDto> ListarEstadosVuelos(String PNR);
+	
+	MillasDto ListarMillas(String PNR,String Email);
+	
 }

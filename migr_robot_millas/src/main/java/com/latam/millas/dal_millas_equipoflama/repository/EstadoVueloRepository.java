@@ -1,5 +1,7 @@
 package com.latam.millas.dal_millas_equipoflama.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,6 +12,12 @@ import com.latam.millas.dal_millas_equipoflama.entity.EstadoVuelo;
 @Repository
 public interface EstadoVueloRepository extends JpaRepository<EstadoVuelo, Integer>{
 
-	@Query(value = "SELECT vuelo_cdg_vuelo,cdg_status,flight_number,flight_status FROM vuelo WHERE vuelo_cdg_vuelo=:codVuelo && =:codStatus", nativeQuery = true)
-	public EstadoVuelo obtenerEstadoVueloPorCodVueloYCodStatus(@Param("codVuelo") int codVuelo, @Param("codStatus") String codStatus);
+	
+	@Query(value = "SELECT * FROM estado_vuelo WHERE flight_number=:NumeroVuelo && flight_status= 1", nativeQuery = true)
+    public List<EstadoVuelo> obtenerEstadoVueloPorNumeroVuelo(@Param("NumeroVuelo") String NumeroVuelo);
+	
+	@Query(value = "SELECT cdg_vuelo FROM estado_vuelo WHERE flight_number=:NumeroVuelo && flight_status= 1", nativeQuery = true)
+    public List<Integer> obtenerCodVueloMedianteStatus(@Param("NumeroVuelo") String NumeroVuelo);
+
+
 }
