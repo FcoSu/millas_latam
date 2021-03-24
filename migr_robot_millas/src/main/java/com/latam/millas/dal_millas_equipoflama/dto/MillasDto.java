@@ -14,7 +14,7 @@ public class MillasDto implements Serializable {
 	private String PNR;
 	private String UserEmail;
 	private String Route;
-	private Date FlightDate;
+	private String FlightDate;
 	private int Rewards;
 	private List<LegsDto> Legs;
 

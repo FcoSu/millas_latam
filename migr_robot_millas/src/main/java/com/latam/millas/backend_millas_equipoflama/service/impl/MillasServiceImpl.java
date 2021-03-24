@@ -79,8 +79,9 @@ public class MillasServiceImpl implements MillasService {
 		Respuesta.setUserEmail(UserEmail);
 		Respuesta.setRoute(CalcularRuta(vuelos));
 		Respuesta.setRewards(rewards);
-		Respuesta.setFlightDate(vuelos.get(0).getDepartureDate());
+		Respuesta.setFlightDate(vuelos.get(0).getDepartureDate().toString());		
 		Respuesta.setLegs(CalcularLegs(vuelos));
+		System.out.print(Respuesta);
 		return Respuesta;
 	}
 	public String CalcularRuta(List<VueloDto> vuelos) {

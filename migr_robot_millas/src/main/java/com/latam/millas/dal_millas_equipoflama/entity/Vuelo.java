@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Entity
@@ -26,14 +28,14 @@ import lombok.Data;
 	@Column(name="departure", length=45, nullable=false)
 	private String departure;
 	
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="departure_date", nullable=false)
 	private Date departureDate;
 	
 	@Column(name="arrival", length=45, nullable=false)
 	private String arrival;
 	
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(name="arrival_date", nullable=false)
 	private Date arrivalDate;
 	

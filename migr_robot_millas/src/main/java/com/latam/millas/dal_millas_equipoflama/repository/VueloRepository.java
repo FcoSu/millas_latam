@@ -15,7 +15,7 @@ public interface VueloRepository extends JpaRepository<Vuelo, Integer> {
 	@Query(value = "SELECT cdg_vuelo,pnr,departure,arrival,departure_date, arrival_date, flight_number FROM vuelo WHERE pnr=:vueloPnr ORDER BY cdg_vuelo DESC", nativeQuery = true)
 	public List<Vuelo> obtenerVueloPorPnr(@Param("vueloPnr") String vueloPnr);
 	
-	@Query(value = "SELECT cdg_vuelo,pnr,departure,arrival,departure_date, arrival_date, flight_number FROM vuelo WHERE cdg_vuelo=:Codigo ORDER BY cdg_vuelo ASC", nativeQuery = true)
+	@Query(value = "SELECT cdg_vuelo,pnr,departure,arrival,departure_date, arrival_date, flight_number FROM vuelo WHERE cdg_vuelo=:Codigo", nativeQuery = true)
 	public Vuelo obtenerVueloPorCodigo(@Param("Codigo") int Codigo);
 	
 	
