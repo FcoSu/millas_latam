@@ -37,12 +37,20 @@ public class MillasController {
 
 	@RequestMapping(value = "/Millas/Post", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Object> getData(@RequestBody json Json) {
-		pnr = Json.getPnr();
-		UsuarioEmail = Json.getUserEmail();
+		pnr = Json.getPnr().trim();
+		UsuarioEmail = Json.getUserEmail().trim();
 		UsuarioDto Usuario = null;
 		MillasDto MillasDTO = null;
-
-		if (Json.getPnr().equals("")) {
+		
+		if(pnr.equals("") && UsuarioEmail.equals("")) {
+            log.error("Debe completar los datos necesarios");
+            response.setDateTime(LocalDateTime.now());
+            response.setMensaje("Debe completar los datos necesarios");
+            ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return entity;
+        }
+		
+		if (pnr.equals("")) {
 			log.error("PNR no debe estar vacio");
 			response.setDateTime(LocalDateTime.now());
 			response.setMensaje("PNR no debe estar vacio");
@@ -50,7 +58,7 @@ public class MillasController {
 			return entity;
 		}
 
-		if (Json.getUserEmail().equals("")) {
+		if (UsuarioEmail.equals("")) {
 			log.error("Correo no debe estar vacio");
 			response.setDateTime(LocalDateTime.now());
 			response.setMensaje("Correo no debe estar vacio");
@@ -58,16 +66,23 @@ public class MillasController {
 			return entity;
 		}
 
-		if (ValidarFormatoEmail(Json.getUserEmail().toString()) == false) {
+		if (ValidarFormatoEmail(UsuarioEmail.toString()) == false) {
 			log.error("Correo no es valido");
 			response.setDateTime(LocalDateTime.now());
 			response.setMensaje("Correo no es valido");
 			ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 			return entity;
 		}
-		
+		if(ValidarFormatoPnr(pnr.toString()) == false) {
+			log.error("El formato del PNR no es valido");
+			response.setDateTime(LocalDateTime.now());
+			response.setMensaje("El formato del PNR no es valido");
+			ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+			return entity;		
+			
+		}		
 
-		if (Json.getPnr().length() != 6) {
+		if (pnr.length() != 6) {
 			log.error("PNR Solo debe tener 6 caracteres");
 			response.setDateTime(LocalDateTime.now());
 			response.setMensaje("PNR Solo debe tener 6 caracteres");
@@ -75,7 +90,7 @@ public class MillasController {
 			return entity;
 		}
 
-		Usuario = usuarioService.ValidarUsuario(Json.getUserEmail());
+		Usuario = usuarioService.ValidarUsuario(UsuarioEmail);
 		if (Usuario.getCodigoUsuario() == 0) {
 			log.error("Correo no existe en los datos de latam");
 			response.setDateTime(LocalDateTime.now());
@@ -99,6 +114,12 @@ public class MillasController {
 		Matcher matcher = pattern.matcher(Email);
 		return matcher.matches();
 
+	}
+	
+	public boolean ValidarFormatoPnr(String Pnr) {
+		Pattern pattern = Pattern.compile("^[A-Z]*");
+		Matcher matcher = pattern.matcher(Pnr);
+		return matcher.matches();
 	}
 
 }
