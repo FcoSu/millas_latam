@@ -18,13 +18,28 @@ public class VueloServiceImpl implements VueloService {
 	VueloRepository VueloRepositorio;
 
 	@Override
-	public List<VueloDto> obtenerVuelos(String pnr) {
+	public List<VueloDto> obtenerVuelosPorPnrOrdDESC(String pnr) {
 		List<VueloDto> VuelosDTO = new ArrayList<>();
 		List<Vuelo> VueloEntidad = VueloRepositorio.obtenerVueloPorPnr(pnr);
 		
 		VueloMapper(VuelosDTO, VueloEntidad);
 		return VuelosDTO;
 	}
+	
+	@Override
+	public List<VueloDto> ObtenerVuelosPorCodOrdASC(List<Integer> Codigos) {
+		List<VueloDto> VuelosDTO = new ArrayList<>();
+		List<Vuelo> VueloEntidad = new ArrayList<>();
+		for(int i=0;i<Codigos.size();i++) {
+			
+			VueloEntidad.add(VueloRepositorio.obtenerVueloPorCodigo(Codigos.get(i)));
+		}
+		
+		
+		VueloMapper(VuelosDTO, VueloEntidad);
+		return VuelosDTO;
+	}
+	
 	
 	private void VueloMapper(List<VueloDto> VuelosDto, List<Vuelo> vueloBD) {
 		for (Vuelo Vuelos : vueloBD) {
@@ -42,6 +57,10 @@ public class VueloServiceImpl implements VueloService {
 			VuelosDto.add(VueloDTO);
 		}
 	}
+
+	
+
+	
 	
 
 }

@@ -6,6 +6,7 @@ import com.latam.millas.dal_millas_equipoflama.dto.VueloDto;
 
 public interface VueloService {
 	
-	List<VueloDto> obtenerVuelos(String pnr);
+	List<VueloDto> obtenerVuelosPorPnrOrdDESC(String pnr);
+	List<VueloDto> ObtenerVuelosPorCodOrdASC(List<Integer> Codigos);
 
 }

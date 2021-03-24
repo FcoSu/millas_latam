@@ -8,8 +8,8 @@ import lombok.Data;
 public class EstadoVueloDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private int vueloCodigoVuelo;
-	private String codigoStatus;
+	private int CodigoVuelo;
+	private int codigoStatus;
 	private String flightNumber;
 	private int flightStatus;
 	
