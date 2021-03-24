@@ -49,7 +49,7 @@ public class Controller {
         	 log.error("PNR no debe estar vacio"); 
         	 response.setDateTime(LocalDateTime.now());
              response.setMensaje("PNR no debe estar vacio");
-             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
              return entity;	
          }
          
@@ -57,7 +57,7 @@ public class Controller {
         	 log.error("Correo no debe estar vacio"); 
         	 response.setDateTime(LocalDateTime.now());
              response.setMensaje("Correo no debe estar vacio");
-             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
              return entity;	
          }
         
@@ -65,7 +65,7 @@ public class Controller {
         	log.error("Correo no es valido"); 
        	 	response.setDateTime(LocalDateTime.now());
             response.setMensaje("Correo no es valido");
-            ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+            ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
             return entity;
         }
 	  		  	
@@ -81,7 +81,7 @@ public class Controller {
         	 log.error("PNR Solo debe tener 6 caracteres");   
         	 response.setDateTime(LocalDateTime.now());
              response.setMensaje("PNR Solo debe tener 6 caracteres");
-             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+             ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
              return entity;
          	}     
          
