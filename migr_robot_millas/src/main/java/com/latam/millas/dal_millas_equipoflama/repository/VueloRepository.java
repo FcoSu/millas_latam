@@ -18,6 +18,9 @@ public interface VueloRepository extends JpaRepository<Vuelo, Integer> {
 	@Query(value = "SELECT cdg_vuelo,pnr,departure,arrival,departure_date, arrival_date, flight_number FROM vuelo WHERE cdg_vuelo=:Codigo", nativeQuery = true)
 	public Vuelo obtenerVueloPorCodigo(@Param("Codigo") int Codigo);
 	
+	@Query(value = "SELECT cdg_vuelo,pnr,departure,arrival,departure_date, arrival_date, flight_number FROM vuelo WHERE pnr=:vueloPnr LIMIT 1 ", nativeQuery = true)
+    public Vuelo obtenerVuelo(@Param("vueloPnr") String vueloPnr);
+	
 	
 
 }

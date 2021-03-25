@@ -41,8 +41,8 @@ public class MillasServiceImpl implements MillasService {
 		if (!Vuelos.isEmpty()) {
 			VuelosPostVerificacion = VerificarEstado1UltimoVuelo(Vuelos);
 			System.out.println("VuelosPostVerificacion :  " + VuelosPostVerificacion);
+			Rewards = 50 * VuelosPostVerificacion.size();
 		}
-		Rewards = 50 * VuelosPostVerificacion.size();
 		Vuelos = vueloService.ObtenerVuelosPorCodOrdASC(VuelosPostVerificacion);
 		//System.out.println("Vuelos:   " + Vuelos);
 		millas = armarRespuesta(Vuelos,Rewards,PNR,Email);
