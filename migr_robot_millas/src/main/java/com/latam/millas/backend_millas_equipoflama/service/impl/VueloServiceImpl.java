@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.latam.millas.backend_millas_equipoflama.service.VueloService;
+import com.latam.millas.backforfront_millas_equipoflama.controller.MillasController;
 import com.latam.millas.dal_millas_equipoflama.dto.VueloDto;
 import com.latam.millas.dal_millas_equipoflama.entity.Vuelo;
 import com.latam.millas.dal_millas_equipoflama.repository.VueloRepository;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Service
 public class VueloServiceImpl implements VueloService {
 	
@@ -39,6 +42,31 @@ public class VueloServiceImpl implements VueloService {
 		VueloMapper(VuelosDTO, VueloEntidad);
 		return VuelosDTO;
 	}
+	@Override
+    public VueloDto ValidarPnr(String pnr) {
+
+        Vuelo vueloEntidad = VueloRepositorio.obtenerVuelo(pnr);
+
+        VueloDto vueloDto = null;
+
+
+        try {
+            vueloDto = new VueloDto();
+
+            vueloDto.setPnr(vueloEntidad.getPnr());
+            vueloDto.setCodigoVuelo(vueloEntidad.getCodigoVuelo());
+            vueloDto.setDeparture(vueloEntidad.getDeparture());
+            vueloDto.setArrival(vueloEntidad.getArrival());
+            vueloDto.setDepartureDate(vueloEntidad.getDepartureDate());
+            vueloDto.setArrivalDate(vueloEntidad.getArrivalDate());
+            vueloDto.setFlightNumber(vueloEntidad.getFlightNumber());
+            }catch (RuntimeException e) {
+                log.error(e.getMessage());
+            }
+
+        return vueloDto ;
+
+    }
 	
 	
 	private void VueloMapper(List<VueloDto> VuelosDto, List<Vuelo> vueloBD) {

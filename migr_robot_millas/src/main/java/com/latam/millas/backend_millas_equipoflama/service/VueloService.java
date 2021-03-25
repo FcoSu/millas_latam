@@ -8,5 +8,6 @@ public interface VueloService {
 	
 	List<VueloDto> obtenerVuelosPorPnrOrdDESC(String pnr);
 	List<VueloDto> ObtenerVuelosPorCodOrdASC(List<Integer> Codigos);
+	VueloDto ValidarPnr(String pnr);
 
 }

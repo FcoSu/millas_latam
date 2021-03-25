@@ -8,4 +8,5 @@ import lombok.Data;
 public class ExceptionResponse {
 	 private String mensaje;
      private LocalDateTime dateTime;
+     private String Detalle;
 }
